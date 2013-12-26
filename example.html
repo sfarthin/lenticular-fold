@@ -1,0 +1,26 @@
+<html>
+
+<body>
+	<script src="lenticular.js"></script>
+	<script>
+	
+		var img1 = new Image(),
+			img2 = new Image(),
+			after = function(x, fn) { var i = 0; return function() { i++; if(i==x) fn(); }; },
+			afterImagesLoad = after(2, function() {
+				new Lenticular(img1, img2, {}, function(img) {
+					document.body.appendChild(img1);
+					document.body.appendChild(img2);
+					document.body.appendChild(img);
+				});
+			});
+		
+		img1.onload = afterImagesLoad;
+		img2.onload = afterImagesLoad;
+		img1.src="Lenticular_2a.jpg";
+		img2.src="Lenticular_2b.jpg";
+	
+	</script>
+</body>
+
+</html>
